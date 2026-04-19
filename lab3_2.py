@@ -74,8 +74,13 @@ def insert(node: Node | None, index: int, value: int) -> Node:
     - Otherwise, recursively rebuild the list until reaching index
     - Raise IndexError if index is invalid
     """
-    # TODO: write this function
-    pass
+    if index==0: return newhead(node,value)
+    return insert_recursive(node,0,index,value)
+
+def insert_recursive(node: Node| None, current_index:int,index:int, value: int)-> Node:
+    if index == current_index: return newhead(node,value)
+    if node == None: return Node(value)
+    return Node(node.value,insert_recursive(node.next,current_index+1,index,value))
 
 
 # -------------------------------------------------------------------

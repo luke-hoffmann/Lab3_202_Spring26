@@ -16,10 +16,12 @@ def insert(arr: ArrayList, n: int) -> ArrayList:
     Later in the lab, modify this function so that it automatically
     calls resize(arr) when needed.
     """
-    arr2 = ArrayList(arr.size, arr.array.copy(), arr.next)
-
-    if arr2.next == arr2.size:
-        raise IndexError("ArrayList is full")
+    if not isinstance(n,int): raise ValueError
+    arr2 = ArrayList(arr.size,arr.array.copy(),arr.next)
+    if (arr.next >= arr.size): arr2 = resize(arr2,2)
+    
+    # if arr.next == arr.size:
+    #     raise IndexError("ArrayList is full")
 
     arr2.array[arr2.next] = n
     arr2.next += 1
@@ -72,8 +74,12 @@ def resize(arr: ArrayList, factor: int = 2) -> ArrayList:
     - Copy over the existing elements
     - Return a new ArrayList with the new size, new array, and same next
     """
-    # TODO: Write this function
-    pass
+    if not isinstance(factor,int): factor =1
+    if (factor < 1): factor = 1
+    newArray = arr.array.copy()
+    for i in range((arr.size*(factor-1))):
+        newArray.append(None)
+    return ArrayList(arr.size*factor,newArray,arr.next)
 
 
 # -------------------------------------------------------------------

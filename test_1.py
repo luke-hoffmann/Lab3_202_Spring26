@@ -19,7 +19,6 @@ class TestArrayList(unittest.TestCase):
             [10, 20, None, None, None, None, None, None]
         )
         self.assertEqual(arr2.next, 2)
-
     def test_insert_without_resize(self):
         arr1 = ArrayList(4, [10, 20, None, None], 2)
         arr2 = insert(arr1, 30)
@@ -31,7 +30,6 @@ class TestArrayList(unittest.TestCase):
         self.assertEqual(arr2.size, 4)
         self.assertEqual(arr2.array, [10, 20, 30, None])
         self.assertEqual(arr2.next, 3)
-
     def test_insert_with_resize(self):
         arr1 = ArrayList(2, [10, 20], 2)
         arr2 = insert(arr1, 30)
@@ -43,7 +41,7 @@ class TestArrayList(unittest.TestCase):
         self.assertEqual(arr2.size, 4)
         self.assertEqual(arr2.array, [10, 20, 30, None])
         self.assertEqual(arr2.next, 3)
-
+    
 
 if __name__ == "__main__":
     unittest.main()
